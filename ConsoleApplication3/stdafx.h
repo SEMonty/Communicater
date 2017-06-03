@@ -16,6 +16,7 @@
 #include <winsock2.h>
 
 // TODO: プログラムに必要な追加ヘッダーをここで参照してください。
+
 class MySender
 {
 private:
