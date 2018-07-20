@@ -1,9 +1,9 @@
 ﻿
 ## 概要
 ラズパイでタミヤの1/10ラジコンをリモート制御するためのプログラムです。
-アクセス、ステアのPWM指令値をラズパイにUDP経由で投げることで制御することができます。
+アクセル、ステアのPWM指令値をラズパイにUDP経由で投げることで制御することができます。
 
-cpp,simulink用のクライアントが各フォルダに入っています。
+cpp, simulink用のクライアントが各フォルダに入っています。
 
 ## プロトコル
 
@@ -44,7 +44,7 @@ cpp,simulink用のクライアントが各フォルダに入っています。
 |  アクセル（白)  |  GPIO18(12番)  |
 
 
-ラズパイのPIOUTの参考
+PIOUTの参考
 
 [sarfata/pi\-blaster: PWM on the Raspberry pi \- done properly \(in hardware, stable\)](https://github.com/sarfata/pi-blaster#how-to-use)
 
@@ -71,20 +71,31 @@ export http_proxy="http://in-proxy.denso.co.jp:8080/"
 export no_proxy="127.0.0.1,localhost,*.denso.co.jp,*.dnjp.globaldenso,*.tramsite.com,133.192.*.*,10.*.*.*,192.168.*.*,172.16-31.*.*,169.254.*.*"
 ```
 
-## 設定
+## 設定と実行
 必要に応じてラズベリーパイのIPアドレスを固定しておく。
 やり方は調べると大量のでてくるので省略。
 
-制御プログラムの待受ポートはデフォルトで6000番
+rcdriver.pyをダウンロードし適当なフォルダに配置。
+制御プログラムの待受ポートはデフォルトで6000番となっているので
 変えたい場合は、rcdriver.pyの6行目を書き換える。
 ```
 s.bind(('',6000))
 ```
+
+実行
+```
+python {ダウンロードしたフォルダ}/rcdriver.py
+```
+
 ## 自動起動設定
+
+必要に応じてラズパイ起動時に立ち上がるようにしておく。
+
 /etc/rc.local
 
 このファイルの exit 0よりも手前に以下を追記
 ```
 sudo /home/pi/git/pi-blaster/./pi-blaster
+python {ダウンロードしたフォルダ}/rcdriver.py
 ```
 
