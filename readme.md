@@ -5,6 +5,8 @@
 
 cpp, simulink用のクライアントが各フォルダに入っています。
 
+![diagram.png](diagram.png)
+
 ## プロトコル
 
 メッセージ：「s数値」　ステアリングの指令
