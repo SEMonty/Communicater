@@ -3,7 +3,7 @@
 ラズパイでタミヤの1/10ラジコンをリモート制御するためのプログラムです。
 アクセル、ステアのPWM指令値をラズパイにUDP経由で投げることで制御することができます。
 
-cpp, simulink用のクライアントが各フォルダに入っています。
+cpp, ~~simulink~~用のクライアントが各フォルダに入っています。
 
 ![diagram.png](diagram.png)
 
@@ -46,7 +46,7 @@ cpp, simulink用のクライアントが各フォルダに入っています。
 |  アクセル（白)  |  GPIO18(12番)  |
 
 
-PIOUTの参考
+PIN OUTの参考
 
 [sarfata/pi\-blaster: PWM on the Raspberry pi \- done properly \(in hardware, stable\)](https://github.com/sarfata/pi-blaster#how-to-use)
 
@@ -66,11 +66,11 @@ dpkg-buildpackage -us -uc -i && sudo dpkg -i ../pi-blaster*.deb
 [sarfata/pi\-blaster: PWM on the Raspberry pi \- done properly \(in hardware, stable\)](https://github.com/sarfata/pi-blaster#build-your-own-deb-package-and-install-with-dpkg)
 
 社内ネットからアクセスするとプロキシに阻まれることがある。
-その場合は以下のコマンドを実行。もしくは~/.bashrcに追記する。
+その場合は以下のコマンドを環境に合わせて書き換え、実行 or ~/.bashrcに追記する。
 ```
-export https_proxy="http://in-proxy.denso.co.jp:8080/"
-export http_proxy="http://in-proxy.denso.co.jp:8080/"
-export no_proxy="127.0.0.1,localhost,*.denso.co.jp,*.dnjp.globaldenso,*.tramsite.com,133.192.*.*,10.*.*.*,192.168.*.*,172.16-31.*.*,169.254.*.*"
+export https_proxy="http://{address}:{port}/"
+export http_proxy="http://{address}:{port}/"
+export no_proxy="{address},{address}"
 ```
 
 ## 設定と実行
